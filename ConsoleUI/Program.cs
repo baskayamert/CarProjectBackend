@@ -23,6 +23,28 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             //AddCar(carManager);
             //CarTest(carManager);
+
+            //CarDetailTest(carManager);
+
+            UserManager userManager = new UserManager(new EfUserDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            User user1 = new User() { Id = 1, Email = "someone@hotmail.com", FirstName = "Some", LastName = "One", Password = "123" };
+            Customer customer1 = new Customer() {Id = 1, UserId = 1, CompanyName ="X company"};
+            userManager.Add(user1);
+            customerManager.Add(customer1);
+
+            User user2 = new User() { Id = 2, Email = "someone2@hotmail.com", FirstName = "Some", LastName = "One2", Password = "321" };
+            Customer customer2 = new Customer() {Id = 2, UserId = 2, CompanyName = "Y company" };
+            customerManager.Add(customer2);
+
+            Rental rental1 = new Rental() { RentalId = 1, CarId = 1, CustomerId = 1, RentDate = "24.03.2021", ReturnDate = null };
+            Console.WriteLine(rentalManager.Add(rental1).Message);
+        }
+
+        private static void CarDetailTest(CarManager carManager)
+        {
             var result = carManager.GetCarDetails();
             if (result.Success)
             {
@@ -33,9 +55,6 @@ namespace ConsoleUI
                 }
             }
             else Console.WriteLine(result.Message);
-
-        
-
         }
 
         private static void CarTest(CarManager carManager)
