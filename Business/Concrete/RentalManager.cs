@@ -31,24 +31,28 @@ namespace Business.Concrete
             
         }
 
-        public void Delete(Rental rental)
+        public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
+
+            return new SuccessfulResult();
         }
 
-        public List<Rental> GetAll()
+        public IDataResult<List<Rental>> GetAll()
         {
-            return _rentalDal.GetAll();
+            return new SuccessfulDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
-        public Rental GetById(int rentalId)
+        public IDataResult<Rental> GetById(int rentalId)
         {
-            return _rentalDal.Get(r => r.RentalId == rentalId);
+            return new SuccessfulDataResult<Rental>(_rentalDal.Get(r => r.RentalId == rentalId));
         }
 
-        public void Update(Rental rental)
+        public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
+
+            return new SuccessfulResult();
         }
     }
 }

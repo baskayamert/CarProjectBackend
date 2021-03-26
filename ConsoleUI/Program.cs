@@ -26,21 +26,24 @@ namespace ConsoleUI
 
             //CarDetailTest(carManager);
 
-            UserManager userManager = new UserManager(new EfUserDal());
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //UserManager userManager = new UserManager(new EfUserDal());
+            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            User user1 = new User() { Id = 1, Email = "someone@hotmail.com", FirstName = "Some", LastName = "One", Password = "123" };
-            Customer customer1 = new Customer() {Id = 1, UserId = 1, CompanyName ="X company"};
-            userManager.Add(user1);
-            customerManager.Add(customer1);
+            //User user1 = new User() { Id = 1, Email = "someone@hotmail.com", FirstName = "Some", LastName = "One", Password = "123" };
+            //Customer customer1 = new Customer() {Id = 1, UserId = 1, CompanyName ="X company"};
+            //userManager.Add(user1);
+            //customerManager.Add(customer1);
 
-            User user2 = new User() { Id = 2, Email = "someone2@hotmail.com", FirstName = "Some", LastName = "One2", Password = "321" };
-            Customer customer2 = new Customer() {Id = 2, UserId = 2, CompanyName = "Y company" };
-            customerManager.Add(customer2);
+            //User user2 = new User() { Id = 2, Email = "someone2@hotmail.com", FirstName = "Some", LastName = "One2", Password = "321" };
+            //Customer customer2 = new Customer() {Id = 2, UserId = 2, CompanyName = "Y company" };
+            //customerManager.Add(customer2);
 
-            Rental rental1 = new Rental() { RentalId = 1, CarId = 1, CustomerId = 1, RentDate = "24.03.2021", ReturnDate = null };
-            Console.WriteLine(rentalManager.Add(rental1).Message);
+            //Rental rental1 = new Rental() { RentalId = 1, CarId = 1, CustomerId = 1, RentDate = "24.03.2021", ReturnDate = null };
+            //Console.WriteLine(rentalManager.Add(rental1).Message);
+
+     
+
         }
 
         private static void CarDetailTest(CarManager carManager)
@@ -96,13 +99,13 @@ namespace ConsoleUI
 
         private static void BrandTest(BrandManager brandManager)
         {
-            foreach (var brand in brandManager.GetAll())
-            {
-                Console.WriteLine(brand.Name);
-            }
-            Console.WriteLine(brandManager.GetById(2).Name);
-            brandManager.Update(new Brand() { Id = 3, Name = "Şahin" });
-            brandManager.Delete(new Brand() { Id = 3, Name = "Şahin" });
+            //foreach (var brand in brandManager.GetAll())
+            //{
+            //    Console.WriteLine(brand.Name);
+            //}
+            //Console.WriteLine(brandManager.GetById(2).Name);
+            //brandManager.Update(new Brand() { Id = 3, Name = "Şahin" });
+            //brandManager.Delete(new Brand() { Id = 3, Name = "Şahin" });
         }
 
         private static void AddBrand(BrandManager brandManager)
@@ -114,16 +117,16 @@ namespace ConsoleUI
 
         private static void ColorTest(ColorManager colorManager)
         {
-            foreach (var color in colorManager.GetAll())
-            {
-                Console.WriteLine(color.Name);
-            }
+            //foreach (var color in colorManager.GetAll())
+            //{
+            //    Console.WriteLine(color.Name);
+            //}
 
-            Console.WriteLine(colorManager.GetById(2).Name);
+            //Console.WriteLine(colorManager.GetById(2).Name);
 
-            colorManager.Update(new Color() { Id = 5, Name = "Red" });
+            //colorManager.Update(new Color() { Id = 5, Name = "Red" });
 
-            colorManager.Delete(new Color() { Id = 3, Name = "Red" });
+            //colorManager.Delete(new Color() { Id = 3, Name = "Red" });
         }
 
         private static void AddColor(ColorManager colorManager)
