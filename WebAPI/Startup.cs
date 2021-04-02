@@ -1,5 +1,8 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Extensions;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.IoC;
 using Core.Utilities.Security.Jwt;
@@ -56,7 +59,7 @@ namespace WebAPI
             //services.AddSingleton<IUserService, UserManager>();
             //services.AddSingleton<IUserDal, EfUserDal>();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -75,7 +78,9 @@ namespace WebAPI
                     };
                 });
 
-            ServiceTool.Create(services);
+            services.AddDependencyResolvers(new ICoreModule[]{
+                new CoreModule()
+            }); 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
