@@ -4,7 +4,7 @@ using Core.Utilities.Security.IoC;
 using System.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Core.Aspects.Autofac.Caching
+namespace Core.Aspects.Autofac.Performance
 {
     public class PerformanceAspect : MethodInterception
     {
