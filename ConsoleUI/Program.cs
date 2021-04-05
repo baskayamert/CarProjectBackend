@@ -79,8 +79,8 @@ namespace ConsoleUI
             }
             else Console.WriteLine(result2.Message);
            
-            var result3 = carManager.Update(new Car() { Id = 3, BrandId = 2, ColorId = 1, DailyPrice = 275, Description = "Bad car", ModelYear = "1998" });
-            var result4 = carManager.Delete(new Car() { Id = 3, BrandId = 2, ColorId = 1, DailyPrice = 275, Description = "Bad car", ModelYear = "1998" });
+            var result3 = carManager.Update(new Car() { CarId = 3, BrandId = 2, ColorId = 1, DailyPrice = 275, Description = "Bad car", ModelYear = "1998" });
+            var result4 = carManager.Delete(new Car() { CarId = 3, BrandId = 2, ColorId = 1, DailyPrice = 275, Description = "Bad car", ModelYear = "1998" });
 
             Console.WriteLine(result3.Message);
             Console.WriteLine(result4.Message);
@@ -88,9 +88,9 @@ namespace ConsoleUI
 
         private static void AddCar(CarManager carManager)
         {
-            var result = carManager.Add(new Car() { Id = 1, BrandId = 1, ColorId = 2, DailyPrice = 400, Description = "Good car", ModelYear = "2010" });
-            var result2 = carManager.Add(new Car() { Id = 2, BrandId = 2, ColorId = 1, DailyPrice = 500, Description = "Super car", ModelYear = "2000" });
-            var result3 = carManager.Add(new Car() { Id = 3, BrandId = 2, ColorId = 1, DailyPrice = 275, Description = "Old car", ModelYear = "1998" });
+            var result = carManager.Add(new Car() { CarId = 1, BrandId = 1, ColorId = 2, DailyPrice = 400, Description = "Good car", ModelYear = "2010" });
+            var result2 = carManager.Add(new Car() { CarId = 2, BrandId = 2, ColorId = 1, DailyPrice = 500, Description = "Super car", ModelYear = "2000" });
+            var result3 = carManager.Add(new Car() { CarId = 3, BrandId = 2, ColorId = 1, DailyPrice = 275, Description = "Old car", ModelYear = "1998" });
 
             Console.WriteLine(result.Message);
             Console.WriteLine(result2.Message);
@@ -110,9 +110,9 @@ namespace ConsoleUI
 
         private static void AddBrand(BrandManager brandManager)
         {
-            brandManager.Add(new Brand() { Id = 1, Name = "BMW" });
-            brandManager.Add(new Brand() { Id = 2, Name = "Mercedes" });
-            brandManager.Add(new Brand() { Id = 3, Name = "Tesla" });
+            brandManager.Add(new Brand() { BrandId = 1, Name = "BMW" });
+            brandManager.Add(new Brand() { BrandId = 2, Name = "Mercedes" });
+            brandManager.Add(new Brand() { BrandId = 3, Name = "Tesla" });
         }
 
         private static void ColorTest(ColorManager colorManager)
@@ -131,20 +131,20 @@ namespace ConsoleUI
 
         private static void AddColor(ColorManager colorManager)
         {
-            colorManager.Add(new Color() { Id = 1, Name = "Brown" });
-            colorManager.Add(new Color() { Id = 2, Name = "Black" });
-            colorManager.Add(new Color() { Id = 3, Name = "Blue" });
+            colorManager.Add(new Color() { ColorId = 1, Name = "Brown" });
+            colorManager.Add(new Color() { ColorId = 2, Name = "Black" });
+            colorManager.Add(new Color() { ColorId = 3, Name = "Blue" });
         }
 
         private static void Test()
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            carManager.Add(new Car() { Id = 1, BrandId = 1, ColorId = 1, DailyPrice = 600, Description = "BMW", ModelYear = "2010" });
-            carManager.Add(new Car { Id = 2, BrandId = 3, ColorId = 1, DailyPrice = 800, Description = "Mercedes", ModelYear = "2020" });
-            carManager.Add(new Car { Id = 3, BrandId = 4, ColorId = 1, DailyPrice = 250, Description = "Tofaş", ModelYear = "2008" });
-            carManager.Add(new Car { Id = 4, BrandId = 2, ColorId = 1, DailyPrice = 200, Description = "Şahin", ModelYear = "2003" });
-            carManager.Add(new Car { Id = 5, BrandId = 5, ColorId = 1, DailyPrice = 150, Description = "Kartal", ModelYear = "2002" });
+            carManager.Add(new Car() { CarId = 1, BrandId = 1, ColorId = 1, DailyPrice = 600, Description = "BMW", ModelYear = "2010" });
+            carManager.Add(new Car { CarId = 2, BrandId = 3, ColorId = 1, DailyPrice = 800, Description = "Mercedes", ModelYear = "2020" });
+            carManager.Add(new Car { CarId = 3, BrandId = 4, ColorId = 1, DailyPrice = 250, Description = "Tofaş", ModelYear = "2008" });
+            carManager.Add(new Car { CarId = 4, BrandId = 2, ColorId = 1, DailyPrice = 200, Description = "Şahin", ModelYear = "2003" });
+            carManager.Add(new Car { CarId = 5, BrandId = 5, ColorId = 1, DailyPrice = 150, Description = "Kartal", ModelYear = "2002" });
 
             foreach (var car in carManager.GetAll().Data)
             {

@@ -17,11 +17,11 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryCarDal()
         {
             _carList = new List<Car> {
-                new Car{Id = 1, BrandId = 1, ColorId = 1, DailyPrice = 600, Description = "BMW", ModelYear = "2010" },
-                new Car{Id = 2, BrandId = 3, ColorId = 1, DailyPrice = 800, Description = "Mercedes", ModelYear = "2020" },
-                new Car{Id = 3, BrandId = 4, ColorId = 1, DailyPrice = 250, Description = "Tofaş", ModelYear = "2008" },
-                new Car{Id = 4, BrandId = 2, ColorId = 1, DailyPrice = 200, Description = "Şahin", ModelYear = "2003" },
-                new Car{Id = 5, BrandId = 5, ColorId = 1, DailyPrice = 150, Description = "Kartal", ModelYear = "2002" }
+                new Car{CarId = 1, BrandId = 1, ColorId = 1, DailyPrice = 600, Description = "BMW", ModelYear = "2010" },
+                new Car{CarId = 2, BrandId = 3, ColorId = 1, DailyPrice = 800, Description = "Mercedes", ModelYear = "2020" },
+                new Car{CarId = 3, BrandId = 4, ColorId = 1, DailyPrice = 250, Description = "Tofaş", ModelYear = "2008" },
+                new Car{CarId = 4, BrandId = 2, ColorId = 1, DailyPrice = 200, Description = "Şahin", ModelYear = "2003" },
+                new Car{CarId = 5, BrandId = 5, ColorId = 1, DailyPrice = 150, Description = "Kartal", ModelYear = "2002" }
             };
         }
         public void Add(Car car)
@@ -31,7 +31,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car carToDelete = _carList.SingleOrDefault(c => c.Id == car.Id);
+            Car carToDelete = _carList.SingleOrDefault(c => c.CarId == car.CarId);
             _carList.Remove(carToDelete);
         }
 
@@ -52,7 +52,7 @@ namespace DataAccess.Concrete.InMemory
 
         public Car GetById(int id)
         {
-            return _carList.SingleOrDefault(c => c.Id == id);
+            return _carList.SingleOrDefault(c => c.CarId == id);
         }
 
         public Car GetById(Expression<Func<Car, bool>> filter)
@@ -67,8 +67,8 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Car car)
         {
-            Car carToUpdate = _carList.SingleOrDefault(c => c.Id == car.Id);
-            carToUpdate.Id = car.Id;
+            Car carToUpdate = _carList.SingleOrDefault(c => c.CarId == car.CarId);
+            carToUpdate.CarId = car.CarId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.Description = car.Description;
