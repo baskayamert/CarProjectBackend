@@ -24,7 +24,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join color in context.Colors
                              on c.ColorId equals color.ColorId
 
-                             select new CarDetailDto
+                             select new CarDetailDto // State = r.ReturnDate == null ? true : false
                              {
                                  CarName = c.CarName,
                                  BrandName = b.Name,
@@ -37,8 +37,11 @@ namespace DataAccess.Concrete.EntityFramework
                                  ColorId = color.ColorId,
                                  ImagePath = (from cimg in context.CarImages
                                               where cimg.CarId == c.CarId
-                                              select cimg.ImagePath).SingleOrDefault()
-                                
+                                              select cimg.ImagePath).SingleOrDefault(),
+                                 RentalState = (from r in context.Rentals
+                                          where c.CarId == r.CarId
+                                          select r.ReturnDate).SingleOrDefault() < DateTime.Now || context.Rentals.SingleOrDefault(r=>r.CarId == c.CarId) == null  ? true : false
+
                              };
                 return result.ToList();
             }
@@ -46,3 +49,4 @@ namespace DataAccess.Concrete.EntityFramework
 
     }
 }
+

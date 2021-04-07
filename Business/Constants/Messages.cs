@@ -26,5 +26,10 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Succesful login";
         public static string UserAlreadyExists = "The user already exists";
         public static string AccessTokenCreated = "Access token successfully created";
+        public static string PaymentSuccess = "Payment successfully fulfilled";
+        public static string CarOwnerError = "Invalid car owner";
+        public static string CvcError = "Invalid cvc";
+        public static string ExpirationDateError = "Invalid expiration date";
+        public static string CardNumberError = "Invalid card number";
     }
 }
