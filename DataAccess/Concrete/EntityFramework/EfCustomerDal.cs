@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,31 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCustomerDal : EfEntityRepositoryBase<Customer,CarProjectDBContext>, ICustomerDal
+    public class EfCustomerDal : EfEntityRepositoryBase<Customer, CarProjectDBContext>, ICustomerDal
     {
+        public CustomerDto GetCustomerByEmail(string email)
+        {
+            using (CarProjectDBContext context = new CarProjectDBContext())
+            {
+                var result = from c in context.Customers
+                             join u in context.Users
+                             on c.UserId equals u.UserId
+                            
+
+                             select new CustomerDto
+                             {
+                                 UserId = c.UserId,
+                                 CompanyName = c.CompanyName,
+                                 CustomerId = c.CustomerId,
+                                 FindexPoints = c.FindexPoints,
+                                 FirstName = u.FirstName,
+                                 LastName = u.LastName,
+                                 Email = u.Email
+
+
+                             };
+                return result.SingleOrDefault();
+            }
+        }
     }
 }

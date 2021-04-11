@@ -17,7 +17,8 @@ namespace Entities.DTOs
         public double DailyPrice { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-        public bool RentalState { get; set; } 
+        public bool RentalState { get; set; }
+        public int FindexPoints { get; set; }
         public int BrandId { get; set; }
         public int ColorId { get; set; }
     }

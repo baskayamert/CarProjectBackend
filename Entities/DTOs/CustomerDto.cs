@@ -1,18 +1,20 @@
 ﻿using Core.Entities;
-using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.DTOs
 {
-    public class Customer : IEntity
+    public class CustomerDto : IDto
     {
         public int CustomerId { get; set; }
         public int UserId { get; set; }
         public string CompanyName { get; set; }
         public int FindexPoints { get; set; } = 0;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
     }
 }

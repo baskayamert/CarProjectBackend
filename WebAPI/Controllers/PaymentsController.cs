@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +22,13 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("confirmpayment")]
-        public IActionResult ConfirmPayment(PaymentInfo paymentInfo)
+        public IActionResult ConfirmPayment(CreditCard creditCard)
         {
-            var result = _paymentService.Confirm(paymentInfo);
+            var result = _paymentService.Confirm(creditCard);
 
-            //if (result.Success)
-            return Ok(result);
+            if (result.Success) return Ok(result);
 
-            //return BadRequest(result);
+            return BadRequest(result);
         }
     }
 }

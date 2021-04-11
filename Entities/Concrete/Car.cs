@@ -16,5 +16,6 @@ namespace Entities.Concrete
         public string ModelYear { get; set; }
         public double DailyPrice { get; set; }
         public string Description { get; set; }
+        public int FindexPoints { get; set; }
     }
 }

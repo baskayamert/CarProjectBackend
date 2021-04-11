@@ -39,8 +39,9 @@ namespace DataAccess.Concrete.EntityFramework
                                               where cimg.CarId == c.CarId
                                               select cimg.ImagePath).SingleOrDefault(),
                                  RentalState = (from r in context.Rentals
-                                          where c.CarId == r.CarId
-                                          select r.ReturnDate).SingleOrDefault() < DateTime.Now || context.Rentals.SingleOrDefault(r=>r.CarId == c.CarId) == null  ? true : false
+                                                where c.CarId == r.CarId
+                                                select r.ReturnDate).SingleOrDefault() < DateTime.Now || context.Rentals.SingleOrDefault(r => r.CarId == c.CarId) == null ? true : false,
+                                 FindexPoints = c.FindexPoints
 
                              };
                 return result.ToList();

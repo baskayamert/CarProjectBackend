@@ -2,6 +2,7 @@
 using Core.Entities.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfUserDal : EfEntityRepositoryBase<User, CarProjectDBContext>, IUserDal
     {
+
         public List<OperationClaim> GetClaims(User user)
         {
             using (var context = new CarProjectDBContext())
@@ -24,5 +26,26 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.ToList();
             }
         }
+
+        public RoleDto getRoleByUserId(int userId)
+        {
+            using (var context = new CarProjectDBContext())
+            {
+                var result = from u in context.UserOperationClaims
+                             join o in context.OperationClaims
+                             on u.OperationClaimId equals o.Id
+                             join usr in context.Users
+                             on u.UserId equals usr.UserId
+                             
+                             select new RoleDto
+                             {
+                                 RoleId = u.Id,
+                                 RoleName = o.Name,
+                                 UserId = usr.UserId
+                             };
+                return result.SingleOrDefault();
+            }
+        }
+
     }
 }

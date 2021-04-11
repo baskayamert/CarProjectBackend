@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Entities.Concrete;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using Entities.Concrete;
@@ -14,12 +15,12 @@ namespace Business.Concrete
     public class PaymentManager : IPaymentService
     {
         
-        public IResult Confirm(PaymentInfo paymentInfo)
+        public IResult Confirm(CreditCard creditCard)
         {
-            IResult result = BusinessRules.Run(CheckCardNumber(paymentInfo.CardNumber), 
-                CheckExpirationDate(paymentInfo.ExpirationDate), 
-                CheckCvc(paymentInfo.Cvc), 
-                CheckCardOwner(paymentInfo.CardOwner));
+            IResult result = BusinessRules.Run(CheckCardNumber(creditCard.CardNumber), 
+                CheckExpirationDate(creditCard.ExpirationDate), 
+                CheckCvc(creditCard.Cvc), 
+                CheckCardOwner(creditCard.CardOwner));
 
             if (result != null)
             {
